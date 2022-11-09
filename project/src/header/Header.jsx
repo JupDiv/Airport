@@ -13,9 +13,7 @@ const Header = () => {
   ];
   return (
     <header className="header">
-      <div className="header__logo">
-        <img className="header__logo-element" src="../logoandpictures/logos.svg" alt="logo IEV" />
-      </div>
+      <div className="header__logo"></div>
       <ul className="header__list">
         {headerList.map(({ id, name }) => (
           <li className="header__list-element" key={id}>

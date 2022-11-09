@@ -1,20 +1,20 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link, Routes } from 'react-router-dom';
 import Header from './header/Header';
-import Form from './form/Form';
-import Main from './Main';
-import Article from './Article';
-import Footer from './Footer';
+import ResultFieldFlight from './resultFieldFlight/ResultFieldFlight';
+import Footer from './footer/Footer';
+import store from './store';
 
 const App = () => {
   return (
-    <Router>
-      <Header />
-      <Form />
-      <Main />
-      <Article />
-      <Footer />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Header />
+        <ResultFieldFlight />
+        <Footer />
+      </Router>
+    </Provider>
   );
 };
 
