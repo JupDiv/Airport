@@ -1,4 +1,4 @@
-import { fetchData } from './getAction/SearchGetway';
+import fetchData from './utils/getSearchGetway';
 
 export const GET_AIRPORT_LIST = 'AIRPORT/GET_LIST';
 

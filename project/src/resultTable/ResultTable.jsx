@@ -1,10 +1,15 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import checkFlights from '../utils/checkFlights';
 import ResultRow from '../resultRow/resultRow';
-import FlightsNotFound from '../FlightsNotFound/FlightsNotFound';
 
-const ResultTable = ({ searchList }) => {
-  console.log(searchList);
+const ResultTable = ({ searchList, date, path, setSearchParams, searchParams }) => {
+  useEffect(() => {
+    searchParams.set('date', date);
+    setSearchParams(searchParams);
+  }, [date]);
+
+  const airportList = checkFlights(path, searchList);
   return (
     <table className="result-tab__result-table">
       <thead>
@@ -19,9 +24,13 @@ const ResultTable = ({ searchList }) => {
       </thead>
       <tbody>
         <Routes>
-          <Route path={'/'} element={<FlightsNotFound />}></Route>
-          <Route path={'departure'} element={<ResultRow searchList={searchList} />} />
-          <Route path={'arrival'} element={<ResultRow searchList={searchList} />} />
+          <Route path="/" element={<Navigate to={`departures?date=${date}`} replace />} />
+          <Route
+            path={`${path}`}
+            element={airportList.map(({ id, ...flight }) => (
+              <ResultRow key={id} {...flight} />
+            ))}
+          />
         </Routes>
       </tbody>
     </table>

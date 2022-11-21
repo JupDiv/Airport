@@ -3,7 +3,7 @@ import React from 'react';
 const FlightsNotFound = () => {
   return (
     <div>
-      <span>Flight not found. Go to the other vichle</span>
+      <span>Flight not found</span>
     </div>
   );
 };
