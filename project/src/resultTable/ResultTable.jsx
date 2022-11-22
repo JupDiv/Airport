@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
 import checkFlights from '../utils/checkFlights';
 import ResultRow from '../resultRow/resultRow';
 
-const ResultTable = ({ searchList, date, path, setSearchParams, searchParams }) => {
+const ResultTable = ({ searchList, date, path }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     searchParams.set('date', date);
     setSearchParams(searchParams);
