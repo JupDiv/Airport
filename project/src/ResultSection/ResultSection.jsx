@@ -8,23 +8,29 @@ import DateField from '../dateField/DateField';
 import { getData } from '../airport.action';
 import { airportList } from '../airport.selectors';
 import ResultTable from '../resultTable/ResultTable';
+import './resultsection.scss';
 
 const ResultSection = ({ getAirportList, searchList }) => {
-  // const [selectDate, changeTime] = useState(moment().format('YYYY-MM-DD'));
+  const [flightsDeriction, setFlightDerictions] = useState('/departures');
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
 
   const selectDate = searchParams.get('date') || moment().format('YYYY-MM-DD');
-  const selectFlight = searchParams.get('search');
+  const switcherDate = moment().format('YYYY-MM-DD');
 
-  const handlerChangeDate = event => {
-    event.preventDefault();
-    searchParams.set('date', event.target.value);
+  const handlerChangeDate = (setDate, event) => {
+    if (setDate === null) {
+      event.preventDefault();
+      searchParams.set('date', event.target.value);
+      setSearchParams(searchParams);
+      return;
+    }
+    searchParams.set('date', moment(switcherDate).add(setDate, 'days').format('YYYY-MM-DD'));
     setSearchParams(searchParams);
   };
 
   useEffect(() => {
-    getAirportList(selectDate, selectFlight);
+    getAirportList(selectDate);
   }, [selectDate]);
 
   if (!searchList) {
@@ -33,18 +39,12 @@ const ResultSection = ({ getAirportList, searchList }) => {
 
   return (
     <div className="result-section">
-      <SwitcherFlight selectDate={selectDate} />
+      <SwitcherFlight onChangeFlightsDerictions={setFlightDerictions} selectDate={selectDate} />
       <DateField onChangeDate={handlerChangeDate} selectDate={selectDate} />
       {searchList.body.departure.length === 0 ? (
         <FlightsNotFound />
       ) : (
-        <ResultTable
-          setSearchParams={setSearchParams}
-          path={pathname}
-          searchList={searchList.body}
-          date={selectDate}
-          searchParams={searchParams}
-        />
+        <ResultTable path={pathname} searchList={searchList.body} date={selectDate} />
       )}
     </div>
   );

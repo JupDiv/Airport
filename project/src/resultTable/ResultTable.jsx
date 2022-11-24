@@ -10,6 +10,8 @@ const ResultTable = ({ searchList, date, path }) => {
     setSearchParams(searchParams);
   }, [date]);
 
+  const selectDate = searchParams.get('date');
+
   const airportList = checkFlights(path, searchList);
   return (
     <table className="result-tab__result-table">
@@ -25,7 +27,7 @@ const ResultTable = ({ searchList, date, path }) => {
       </thead>
       <tbody>
         <Routes>
-          <Route path="/" element={<Navigate to={`departures?date=${date}`} replace />} />
+          <Route path="/" element={<Navigate to={`departures?date=${selectDate}`} replace />} />
           <Route
             path={`${path}`}
             element={airportList.map(({ id, ...flight }) => (

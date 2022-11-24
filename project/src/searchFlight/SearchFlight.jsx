@@ -21,7 +21,7 @@ const SearchForm = () => {
               <input
                 className="main-search__input-element"
                 type="text"
-                placeholder="Номер рейсу або місто"
+                placeholder="Номер рейсу"
                 defaultValue={params.get('search')}
                 name={'search'}
               />
