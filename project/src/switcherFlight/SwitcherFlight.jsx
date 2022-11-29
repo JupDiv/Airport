@@ -13,7 +13,7 @@ const SwitcherFlight = ({ onChangeFlightsDerictions }) => {
       <div className="nav-list__container">
         <li className="nav-list__item">
           <NavLink
-            style={({ isActive }) => (isActive ? { zIndex: 1 } : { zIndex: 0 })}
+            style={({ isActive }) => (isActive ? { zIndex: 3 } : { zIndex: 1 })}
             onClick={() => onChangeFlightsDerictions(pathname)}
             className="nav-list__link"
             to={`/departures?date=${selectDate}`}

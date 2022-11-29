@@ -40,7 +40,11 @@ const ResultSection = ({ getAirportList, searchList }) => {
   return (
     <div className="result-section">
       <SwitcherFlight onChangeFlightsDerictions={setFlightDerictions} selectDate={selectDate} />
-      <DateField onChangeDate={handlerChangeDate} selectDate={selectDate} />
+      <DateField
+        date={searchParams.get('date')}
+        onChangeDate={handlerChangeDate}
+        selectDate={selectDate}
+      />
       {searchList.body.departure.length === 0 ? (
         <FlightsNotFound />
       ) : (

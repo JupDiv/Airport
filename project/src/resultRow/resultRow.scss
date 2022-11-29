@@ -1,3 +1,13 @@
+.table-element {
+  &__item {
+    text-align: center;
+  }
+
+  &__item:nth-of-type() {
+    background-color: gray;
+  }
+}
+
 .logo {
   max-width: 63px;
   max-height: 37px;

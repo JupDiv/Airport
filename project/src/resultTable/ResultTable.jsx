@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
 import checkFlights from '../utils/checkFlights';
 import ResultRow from '../resultRow/resultRow';
+import './resulttable.scss';
 
 const ResultTable = ({ searchList, date, path }) => {
   const [searchParams, setSearchParams] = useSearchParams();

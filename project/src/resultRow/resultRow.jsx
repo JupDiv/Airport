@@ -4,16 +4,16 @@ import './resultRow.scss';
 
 const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => {
   return (
-    <tr>
-      <td>{term}</td>
-      <td>{shedule}</td>
-      <td>{city}</td>
-      <td>{timeTake}</td>
-      <td>
+    <tr className="table-element">
+      <td className="table-element__item">{term}</td>
+      <td className="table-element__item">{shedule}</td>
+      <td className="table-element__item">{city}</td>
+      <td className="table-element__item">{timeTake}</td>
+      <td className="table-element__item">
         <img className="logo" src={logo} alt="logo" />
         {name}
       </td>
-      <td>{carrierID}</td>
+      <td className="table-element__item">{carrierID}</td>
     </tr>
   );
 };

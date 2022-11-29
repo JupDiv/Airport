@@ -1,9 +1,10 @@
 import React from 'react';
+import './flightnotfound.scss';
 
 const FlightsNotFound = () => {
   return (
-    <div>
-      <span>Flight not found</span>
+    <div className="not-found">
+      <span className="not-found__text">Flight not found</span>
     </div>
   );
 };
