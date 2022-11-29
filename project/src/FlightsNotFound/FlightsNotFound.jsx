@@ -4,7 +4,7 @@ import './flightnotfound.scss';
 const FlightsNotFound = () => {
   return (
     <div className="not-found">
-      <span className="not-found__text">Flight not found</span>
+      <span className="not-found__text">Рейсів немає</span>
     </div>
   );
 };
