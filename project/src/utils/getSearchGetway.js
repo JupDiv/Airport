@@ -1,5 +1,4 @@
 import moment from 'moment';
-import { useSearchParams } from 'react-router-dom';
 
 const baseUrl = 'https://api.iev.aero/api/flights';
 
@@ -10,7 +9,7 @@ const fetchData = async date => {
     if (response.ok) {
       return response;
     }
-    throw Error('we have problems with getway');
+    throw Error('Problem with connection');
   });
 
   return res.json();
