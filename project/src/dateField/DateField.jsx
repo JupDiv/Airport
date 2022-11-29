@@ -10,11 +10,14 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
   return (
     <div className="calendar-section">
       <div className="calendar-section__container">
-        <div className="calendar-section__celendar">
-          <label htmlFor="search-date">{moment(selectDate, 'DD-MM-YYYY').format('DD/MM')}</label>
-          <i className="fas fa-calendar-days"></i>
+        <div className="calendar-section__calendar">
+          <label className="calendar-section__calendar-text" htmlFor="search-date">
+            {moment(selectDate).format('DD/MM')}
+          </label>
+          <i className="fas fa-calendar-days calendar-section__icon"></i>
           <form>
             <input
+              className="calendar-section__calendar-item"
               onChange={e => onChangeDate(null, e)}
               type="date"
               name="date"
