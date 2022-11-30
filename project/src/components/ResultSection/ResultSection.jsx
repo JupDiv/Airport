@@ -5,8 +5,8 @@ import moment from 'moment';
 import FlightsNotFound from '../FlightsNotFound/FlightsNotFound';
 import SwitcherFlight from '../switcherFlight/SwitcherFlight';
 import DateField from '../dateField/DateField';
-import { getData } from '../airport.action';
-import { airportList } from '../airport.selectors';
+import { getData } from '../../airport.action';
+import { airportList } from '../../airport.selectors';
 import ResultTable from '../resultTable/ResultTable';
 import './resultSection.scss';
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
-import checkFlights from '../utils/checkFlights';
+import checkFlights from '../../utils/checkFlights';
 import ResultRow from '../resultRow/resultRow';
 import './resulttable.scss';
 
