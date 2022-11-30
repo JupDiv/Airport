@@ -6,6 +6,11 @@ import './datefield.scss';
 const DateFiled = ({ onChangeDate, selectDate }) => {
   const [dateParams, setDateParams] = useSearchParams();
 
+  useEffect(() => {
+    dateParams.set('date', selectDate);
+    setDateParams(dateParams);
+  }, [selectDate]);
+
   const currentDate = dateParams.get('date');
   return (
     <div className="calendar-section">

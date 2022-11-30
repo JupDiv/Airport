@@ -21,8 +21,8 @@ const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => 
       <td className="table-body-element__item">Вилетів о {timeTake}</td>
       <td className="table-body-element__item">
         <div className="table-body-element__logo">
-          <img className="logo" src={logo} alt="logo" />
-          <span>{name}</span>
+          <img className="table-body-element__logo-img" src={logo} alt="logo" />
+          <span className="table-body-element__logo-text">{name}</span>
         </div>
       </td>
       <td className="table-body-element__item">{carrierID}</td>

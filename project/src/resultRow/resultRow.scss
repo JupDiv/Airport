@@ -36,9 +36,13 @@
     border-color: #1eb7ee;
     color: #1eb7ee;
   }
-}
 
-.logo {
-  max-width: 63px;
-  max-height: 37px;
+  &__logo-img {
+    max-width: 63px;
+    max-height: 37px;
+  }
+
+  &__logo-text {
+    margin-left: 5px;
+  }
 }
