@@ -8,7 +8,7 @@ import DateField from '../dateField/DateField';
 import { getData } from '../airport.action';
 import { airportList } from '../airport.selectors';
 import ResultTable from '../resultTable/ResultTable';
-import './resultsection.scss';
+import './resultSection.scss';
 
 const ResultSection = ({ getAirportList, searchList }) => {
   const [flightsDeriction, setFlightDerictions] = useState('/departures');
