@@ -15,15 +15,15 @@ const ResultTable = ({ searchList, date, path }) => {
 
   const airportList = checkFlights(path, searchList);
   return (
-    <table className="result-tab__result-table">
-      <thead>
-        <tr>
-          <th>Термінал</th>
-          <th>Розклад</th>
-          <th>Напрямок</th>
-          <th>Статус</th>
-          <th>Авіакомпанія</th>
-          <th>Рейс</th>
+    <table className="result-table">
+      <thead className="result-table__header">
+        <tr className="result-table__head-row">
+          <th className="result-table__head-col">Термінал</th>
+          <th className="result-table__head-col">Розклад</th>
+          <th className="result-table__head-col">Напрямок</th>
+          <th className="result-table__head-col">Статус</th>
+          <th className="result-table__head-col">Авіакомпанія</th>
+          <th className="result-table__head-col">Рейс</th>
         </tr>
       </thead>
       <tbody>

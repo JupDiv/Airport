@@ -1,10 +1,40 @@
-.table-element {
+.table-body-element {
+  &:nth-of-type(odd) {
+    background-color: rgba(0, 102, 135, 0.1);
+  }
   &__item {
+    text-align: left;
+    font-size: 18px;
+    line-height: 40px;
+    padding: 16px 10px;
+    border: 0;
+  }
+
+  &__item:first-child {
     text-align: center;
   }
 
-  &__item:nth-of-type() {
-    background-color: gray;
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__term {
+    color: #63c745;
+    font-weight: 700;
+    border: 1px solid #63c745;
+    border-radius: 50%;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 22px;
+  }
+
+  &__term_other-terminal {
+    border-color: #1eb7ee;
+    color: #1eb7ee;
   }
 }
 
