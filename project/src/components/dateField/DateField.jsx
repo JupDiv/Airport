@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams, useLocation } from 'react-router-dom';
 import moment from 'moment';
 import './datefield.scss';
 
 const DateFiled = ({ onChangeDate, selectDate }) => {
   const [dateParams, setDateParams] = useSearchParams();
+  const { pathname } = useLocation();
+  console.log(pathname);
 
   useEffect(() => {
     dateParams.set('date', selectDate);
@@ -12,6 +14,24 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
   }, [selectDate]);
 
   const currentDate = dateParams.get('date');
+  const switcherDate = moment().format('YYYY-MM-DD');
+
+  const handlerYestaday = e => {
+    e.preventDefault();
+    dateParams.set('date', moment(switcherDate).add(-1, 'days').format('YYYY-MM-DD'));
+    setDateParams(dateParams);
+  };
+  const handlerToday = e => {
+    e.preventDefault();
+    dateParams.set('date', moment(switcherDate).add(0, 'days').format('YYYY-MM-DD'));
+    setDateParams(dateParams);
+  };
+  const handlerTomorrow = e => {
+    e.preventDefault();
+    dateParams.set('date', moment(switcherDate).add(1, 'days').format('YYYY-MM-DD'));
+    setDateParams(dateParams);
+  };
+
   return (
     <div className="calendar-section">
       <div className="calendar-section__container">
@@ -32,8 +52,9 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
         </div>
         <div className="calendar-section__button-container">
           <div className="calendar-section__activity-button">
-            <button
-              onClick={e => onChangeDate(-1, e)}
+            <NavLink
+              to={`/departures?date=${selectDate}`}
+              onClick={handlerYestaday}
               className={
                 currentDate === moment().add(-1, 'days').format('YYYY-MM-DD')
                   ? `calendar-section__select-dates_active calendar-section__dates-button`
@@ -44,11 +65,12 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
                 {moment().add(-1, 'days').format('DD/MM')}
               </span>
               <span className="calendar-section__input-button-text">Вчора</span>
-            </button>
+            </NavLink>
           </div>
           <div className="calendar-section__activity-button">
-            <button
-              onClick={e => onChangeDate(0, e)}
+            <NavLink
+              to={'departures'}
+              onClick={handlerToday}
               className={
                 currentDate === moment().format('YYYY-MM-DD')
                   ? `calendar-section__select-dates_active calendar-section__dates-button`
@@ -59,11 +81,12 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
                 {moment().add(0, 'days').format('DD/MM')}
               </span>
               <span className="calendar-section__input-button-text">Сьогодні</span>
-            </button>
+            </NavLink>
           </div>
           <div className="calendar-section__activity-button">
-            <button
-              onClick={e => onChangeDate(1, e)}
+            <NavLink
+              to={'departures'}
+              onClick={handlerTomorrow}
               className={
                 currentDate === moment().add(1, 'days').format('YYYY-MM-DD')
                   ? `calendar-section__select-dates_active calendar-section__dates-button`
@@ -74,7 +97,7 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
                 {moment().add(1, 'days').format('DD/MM')}
               </span>
               <span className="calendar-section__input-button-text">Завтра</span>
-            </button>
+            </NavLink>
           </div>
         </div>
       </div>
