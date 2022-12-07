@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
-import moment from 'moment';
 import './switcherflight.scss';
 
-const SwitcherFlight = ({ onChangeFlightsDerictions }) => {
+const SwitcherFlight = ({ onChangeFlightsDerictions, selectDate, date }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectDate = searchParams.get('date') || moment().format('YYYY-MM-DD');
   const { pathname } = useLocation();
+
+  // useEffect(() => {
+  //   searchParams.set('date', selectDate);
+  //   setSearchParams(searchParams);
+  // }, [selectDate]);
 
   const changedOne = {
     zIndex: 3,
@@ -14,11 +17,11 @@ const SwitcherFlight = ({ onChangeFlightsDerictions }) => {
     color: '#fff',
   };
 
-  const changedTwo = {
-    zIndex: 2,
-    backgroundColor: '#fff',
-    color: '#1eb7ee',
-  };
+  // const changedTwo = {
+  //   zIndex: 2,
+  //   backgroundColor: '#fff',
+  //   color: '#1eb7ee',
+  // };
 
   return (
     <ul className="nav-list">

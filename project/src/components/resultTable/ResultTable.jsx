@@ -4,6 +4,15 @@ import checkFlights from '../../utils/checkFlights';
 import ResultRow from '../resultRow/resultRow';
 import './resulttable.scss';
 
+const textHeadTable = [
+  { id: 1, name: 'Термінал' },
+  { id: 2, name: 'Розклад' },
+  { id: 3, name: 'Напрямок' },
+  { id: 4, name: 'Статус' },
+  { id: 5, name: 'Авіакомпанія' },
+  { id: 6, name: 'Рейс' },
+];
+
 const ResultTable = ({ searchList, date, path }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
@@ -18,13 +27,11 @@ const ResultTable = ({ searchList, date, path }) => {
     <table className="result-table">
       <thead className="result-table__header">
         <tr className="result-table__head-row">
-          <th className="result-table__head-col">Термінал</th>
-          <th className="result-table__head-col">Розклад</th>
-          <th className="result-table__head-col">Напрямок</th>
-          <th className="result-table__head-col">Статус</th>
-          <th className="result-table__head-col">Авіакомпанія</th>
-          <th className="result-table__head-col">Рейс</th>
-          <th></th>
+          {textHeadTable.map(({ id, name }) => (
+            <th key={id} className="result-table__head-col">
+              {name}
+            </th>
+          ))}
         </tr>
       </thead>
       <tbody>
