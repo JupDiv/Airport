@@ -16,16 +16,10 @@ const ResultSection = ({ getAirportList, searchList }) => {
   const { pathname } = useLocation();
 
   const selectDate = searchParams.get('date') || moment().format('YYYY-MM-DD');
-  const switcherDate = moment().format('YYYY-MM-DD');
 
-  const handlerChangeDate = (setDate, event) => {
-    if (setDate === null) {
-      event.preventDefault();
-      searchParams.set('date', event.target.value);
-      setSearchParams(searchParams);
-      return;
-    }
-    searchParams.set('date', moment(switcherDate).add(setDate, 'days').format('YYYY-MM-DD'));
+  const handlerChangeDate = event => {
+    event.preventDefault();
+    searchParams.set('date', event.target.value);
     setSearchParams(searchParams);
   };
 
@@ -39,7 +33,11 @@ const ResultSection = ({ getAirportList, searchList }) => {
 
   return (
     <div className="result-section">
-      <SwitcherFlight onChangeFlightsDerictions={setFlightDerictions} selectDate={selectDate} />
+      <SwitcherFlight
+        date={searchParams.get('date')}
+        onChangeFlightsDerictions={setFlightDerictions}
+        selectDate={selectDate}
+      />
       <DateField
         date={searchParams.get('date')}
         onChangeDate={handlerChangeDate}

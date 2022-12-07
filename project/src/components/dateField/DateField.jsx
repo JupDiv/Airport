@@ -53,7 +53,7 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
         <div className="calendar-section__button-container">
           <div className="calendar-section__activity-button">
             <NavLink
-              to={`/departures?date=${selectDate}`}
+              to={`/departures`}
               onClick={handlerYestaday}
               className={
                 currentDate === moment().add(-1, 'days').format('YYYY-MM-DD')
