@@ -43,7 +43,7 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
           <form>
             <input
               className="calendar-section__calendar-item"
-              onChange={e => onChangeDate(null, e)}
+              onChange={onChangeDate}
               type="date"
               name="date"
               value={selectDate}

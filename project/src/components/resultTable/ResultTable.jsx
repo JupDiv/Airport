@@ -24,6 +24,7 @@ const ResultTable = ({ searchList, date, path }) => {
           <th className="result-table__head-col">Статус</th>
           <th className="result-table__head-col">Авіакомпанія</th>
           <th className="result-table__head-col">Рейс</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>

@@ -26,7 +26,9 @@ const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => 
         </div>
       </td>
       <td className="table-body-element__item">{carrierID}</td>
-      <td className="table-body-element__item"></td>
+      <td className="table-body-element__item">
+        <span className="table-body-element__text">Деталі рейсу</span>
+      </td>
     </tr>
   );
 };

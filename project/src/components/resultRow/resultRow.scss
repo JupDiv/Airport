@@ -13,6 +13,22 @@
   &__item:first-child {
     text-align: center;
   }
+  &__item:last-child {
+    text-align: center;
+  }
+
+  &__item:last-child {
+    opacity: 0;
+  }
+  &__item:last-child:hover {
+    opacity: 1;
+    transition: 0.2s ease-out;
+  }
+
+  &__text {
+    color: #1eb7ee;
+    border-bottom: 1px solid #1eb7ee;
+  }
 
   &__logo {
     display: flex;

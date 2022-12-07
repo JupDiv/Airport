@@ -37,7 +37,7 @@ const SwitcherFlight = ({ onChangeFlightsDerictions }) => {
 
         <li className="nav-list__item">
           <NavLink
-            style={({ isActive }) => (isActive ? changedOne : changedTwo)}
+            style={({ isActive }) => (isActive ? changedOne : undefined)}
             onClick={() => onChangeFlightsDerictions(pathname)}
             className="nav-list__link"
             to={`/arrivals?date=${selectDate}`}
