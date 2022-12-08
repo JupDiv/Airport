@@ -7,7 +7,7 @@ import './resulttable.scss';
 const textHeadTable = [
   { id: 1, name: 'Термінал' },
   { id: 2, name: 'Розклад' },
-  { id: 3, name: 'Напрямок' },
+  { id: 3, name: 'Прилітає з' },
   { id: 4, name: 'Статус' },
   { id: 5, name: 'Авіакомпанія' },
   { id: 6, name: 'Рейс' },

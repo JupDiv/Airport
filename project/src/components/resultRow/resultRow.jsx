@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './resultRow.scss';
 
 const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => {
+  const [cursor, setCursor] = useState(false);
+
+  const test = {
+    opacity: 1,
+    transition: ` 0.2s ease-out`,
+  };
   return (
-    <tr className="table-body-element">
+    <tr
+      onMouseEnter={() => setCursor(true)}
+      onMouseLeave={() => setCursor(false)}
+      className="table-body-element"
+    >
       <td className="table-body-element__item">
         <span
           className={
@@ -17,7 +27,10 @@ const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => 
         </span>
       </td>
       <td className="table-body-element__item">{shedule}</td>
-      <td className="table-body-element__item">{city}</td>
+      <td className="table-body-element__item">
+        {' '}
+        <span>{city}</span>{' '}
+      </td>
       <td className="table-body-element__item">Вилетів о {timeTake}</td>
       <td className="table-body-element__item">
         <div className="table-body-element__logo">
@@ -26,7 +39,7 @@ const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => 
         </div>
       </td>
       <td className="table-body-element__item">{carrierID}</td>
-      <td className="table-body-element__item">
+      <td style={cursor ? test : null} className="table-body-element__item">
         <span className="table-body-element__text">Деталі рейсу</span>
       </td>
     </tr>
