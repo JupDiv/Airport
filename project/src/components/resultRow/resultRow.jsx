@@ -7,7 +7,6 @@ const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => 
 
   const test = {
     opacity: 1,
-    transition: ` 0.2s ease-out`,
   };
   return (
     <tr

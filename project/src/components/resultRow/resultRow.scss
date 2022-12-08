@@ -24,11 +24,9 @@
 
   &__item:last-child {
     opacity: 0;
+    transition: 0.2s ease-out;
+    text-align: left;
   }
-  // &__item:last-child:hover {
-  //   opacity: 1;
-  //   transition: 0.2s ease-out;
-  // }
 
   &__text {
     color: #1eb7ee;
