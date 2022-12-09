@@ -5,7 +5,7 @@
 Layout supports only desktop (up-to-1400) versions
 
 
-<h3>The tech stack is:</h3>
+<h3>Used technologies:</h3>
 <ul>
   <li>HTML5</li>
   <li>CSS3</li>  
