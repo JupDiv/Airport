@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './resultRow.scss';
 
 const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => {
-  const [cursor, setCursor] = useState(false);
+  const [detailFlight, setCursor] = useState(false);
 
   const test = {
     opacity: 1,
@@ -38,7 +38,7 @@ const ResultRow = ({ term, shedule, city, timeTake, name, carrierID, logo }) => 
         </div>
       </td>
       <td className="table-body-element__item">{carrierID}</td>
-      <td style={cursor ? test : null} className="table-body-element__item">
+      <td style={detailFlight ? test : null} className="table-body-element__item">
         <span className="table-body-element__text">Деталі рейсу</span>
       </td>
     </tr>
