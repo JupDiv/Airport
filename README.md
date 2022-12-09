@@ -14,12 +14,12 @@ Layout supports only desktop (up-to-1400) versions
   <li>BEM methodology</li>   
   <li>JS ES6</li>
   <li>React</li>
+  <li>React Hooks</li>
+  <li>SPA/React Routing</li>
   <li>Redux</li>
   <li>Webpack</li>
-  <li>SPA/React Routing</li>
   <li>Babel</li>
   <li>ESlint</li>
-  <li>React Hooks</li>
   <li>Prettier</li>
 </ul>
 
