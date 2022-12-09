@@ -6,8 +6,8 @@ import './switcherflight.scss';
 const SwitcherFlight = ({ selectDate }) => {
   const selectStyle = {
     zIndex: 3,
-    backgroundColor: '#1eb7ee',
-    color: '#fff',
+    backgroundColor: '#fff',
+    color: '#1eb7ee',
   };
 
   return (
