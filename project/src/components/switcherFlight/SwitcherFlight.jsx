@@ -1,35 +1,21 @@
-import React, { useEffect } from 'react';
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import propTypes from 'prop-types';
 import './switcherflight.scss';
 
-const SwitcherFlight = ({ onChangeFlightsDerictions, selectDate, date }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const { pathname } = useLocation();
-
-  // useEffect(() => {
-  //   searchParams.set('date', selectDate);
-  //   setSearchParams(searchParams);
-  // }, [selectDate]);
-
-  const changedOne = {
+const SwitcherFlight = ({ selectDate }) => {
+  const selectStyle = {
     zIndex: 3,
     backgroundColor: '#1eb7ee',
     color: '#fff',
   };
-
-  // const changedTwo = {
-  //   zIndex: 2,
-  //   backgroundColor: '#fff',
-  //   color: '#1eb7ee',
-  // };
 
   return (
     <ul className="nav-list">
       <div className="nav-list__container">
         <li className="nav-list__item">
           <NavLink
-            style={({ isActive }) => (isActive ? changedOne : undefined)}
-            onClick={() => onChangeFlightsDerictions(pathname)}
+            style={({ isActive }) => (isActive ? selectStyle : undefined)}
             className="nav-list__link"
             to={`/departures?date=${selectDate}`}
           >
@@ -40,8 +26,7 @@ const SwitcherFlight = ({ onChangeFlightsDerictions, selectDate, date }) => {
 
         <li className="nav-list__item">
           <NavLink
-            style={({ isActive }) => (isActive ? changedOne : undefined)}
-            onClick={() => onChangeFlightsDerictions(pathname)}
+            style={({ isActive }) => (isActive ? selectStyle : undefined)}
             className="nav-list__link"
             to={`/arrivals?date=${selectDate}`}
           >
@@ -52,6 +37,10 @@ const SwitcherFlight = ({ onChangeFlightsDerictions, selectDate, date }) => {
       </div>
     </ul>
   );
+};
+
+SwitcherFlight.propTypes = {
+  selectDate: propTypes.string.isRequired,
 };
 
 export default SwitcherFlight;

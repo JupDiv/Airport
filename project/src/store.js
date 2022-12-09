@@ -1,6 +1,6 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import airportReducer from './airport.reducer';
+import airportReducer from './redux/airport.reducer';
 
 const rootReducers = combineReducers({
   searchList: airportReducer,

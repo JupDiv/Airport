@@ -4,6 +4,8 @@
 // export const departurelListSelector = state => {
 //   return state.airportList.departure;
 // };
-export const airportList = state => {
+const airportList = state => {
   return state.searchList.airportList;
 };
+
+export default airportList;

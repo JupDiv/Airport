@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
+import { Route, Routes, Navigate, useSearchParams, useLocation } from 'react-router-dom';
+import propTypes from 'prop-types';
 import checkFlights from '../../utils/checkFlights';
 import ResultRow from '../resultRow/resultRow';
 import './resulttable.scss';
@@ -13,8 +14,10 @@ const textHeadTable = [
   { id: 6, name: 'Рейс' },
 ];
 
-const ResultTable = ({ searchList, date, path }) => {
+const ResultTable = ({ searchList, date }) => {
+  const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
     searchParams.set('date', date);
     setSearchParams(searchParams);
@@ -22,7 +25,7 @@ const ResultTable = ({ searchList, date, path }) => {
 
   const selectDate = searchParams.get('date');
 
-  const airportList = checkFlights(path, searchList);
+  const airportList = checkFlights(pathname, searchList);
   return (
     <table className="result-table">
       <thead className="result-table__header">
@@ -38,7 +41,7 @@ const ResultTable = ({ searchList, date, path }) => {
         <Routes>
           <Route path="/" element={<Navigate to={`departures?date=${selectDate}`} replace />} />
           <Route
-            path={`${path}`}
+            path={`${pathname}`}
             element={airportList.map(({ id, ...flight }) => (
               <ResultRow key={id} {...flight} />
             ))}
@@ -47,6 +50,11 @@ const ResultTable = ({ searchList, date, path }) => {
       </tbody>
     </table>
   );
+};
+
+ResultTable.propTypes = {
+  searchList: propTypes.object.isRequired,
+  date: propTypes.string.isRequired,
 };
 
 export default ResultTable;

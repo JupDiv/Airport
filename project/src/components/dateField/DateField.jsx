@@ -5,7 +5,6 @@ import './datefield.scss';
 
 const DateFiled = ({ onChangeDate, selectDate }) => {
   const [dateParams, setDateParams] = useSearchParams();
-  const { pathname } = useLocation();
 
   useEffect(() => {
     dateParams.set('date', selectDate);

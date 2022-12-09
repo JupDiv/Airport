@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 import moment from 'moment';
 import FlightsNotFound from '../FlightsNotFound/FlightsNotFound';
 import SwitcherFlight from '../switcherFlight/SwitcherFlight';
 import DateField from '../dateField/DateField';
-import { getData } from '../../airport.action';
-import { airportList } from '../../airport.selectors';
+import { getData } from '../../redux/airport.action';
+import airportList from '../../redux/airport.selectors';
 import ResultTable from '../resultTable/ResultTable';
 import './resultSection.scss';
 
 const ResultSection = ({ getAirportList, searchList }) => {
-  const [flightsDeriction, setFlightDerictions] = useState('/departures');
   const [searchParams, setSearchParams] = useSearchParams();
-  const { pathname } = useLocation();
 
   const selectDate = searchParams.get('date') || moment().format('YYYY-MM-DD');
 
@@ -33,11 +32,7 @@ const ResultSection = ({ getAirportList, searchList }) => {
 
   return (
     <div className="result-section">
-      <SwitcherFlight
-        date={searchParams.get('date')}
-        onChangeFlightsDerictions={setFlightDerictions}
-        selectDate={selectDate}
-      />
+      <SwitcherFlight date={searchParams.get('date')} selectDate={selectDate} />
       <DateField
         date={searchParams.get('date')}
         onChangeDate={handlerChangeDate}
@@ -46,7 +41,7 @@ const ResultSection = ({ getAirportList, searchList }) => {
       {searchList.body.departure.length === 0 ? (
         <FlightsNotFound />
       ) : (
-        <ResultTable path={pathname} searchList={searchList.body} date={selectDate} />
+        <ResultTable searchList={searchList.body} date={selectDate} />
       )}
     </div>
   );
@@ -60,6 +55,11 @@ const mapState = state => {
 
 const mapDispatch = {
   getAirportList: getData,
+};
+
+ResultSection.propTypes = {
+  getAirportList: propTypes.func.isRequired,
+  searchList: propTypes.object,
 };
 
 const connector = connect(mapState, mapDispatch);
