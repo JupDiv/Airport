@@ -24,8 +24,8 @@
     max-width: 66.66667%;
   }
   &__search-line-container {
-    position: relative;
     display: flex;
+    position: relative;
     overflow: hidden;
     margin-top: 24px;
     justify-content: center;
@@ -66,6 +66,7 @@
     text-align: left;
     padding: 0 20px;
     border-radius: 0 90px 0 0;
+    transition: 0.3s ease-in-out;
   }
   &__input-button:hover {
     transition: 0.3s ease-in-out;
