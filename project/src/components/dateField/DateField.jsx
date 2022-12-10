@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import moment from 'moment';
+import pickerDay from '../../utils/pickerDay';
 import './datefield.scss';
 
 const DateFiled = ({ onChangeDate, selectDate }) => {
@@ -12,23 +13,6 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
   }, [selectDate]);
 
   const currentDate = dateParams.get('date');
-  const switcherDate = moment().format('YYYY-MM-DD');
-
-  const handlerYestaday = e => {
-    e.preventDefault();
-    dateParams.set('date', moment(switcherDate).add(-1, 'days').format('YYYY-MM-DD'));
-    setDateParams(dateParams);
-  };
-  const handlerToday = e => {
-    e.preventDefault();
-    dateParams.set('date', moment(switcherDate).add(0, 'days').format('YYYY-MM-DD'));
-    setDateParams(dateParams);
-  };
-  const handlerTomorrow = e => {
-    e.preventDefault();
-    dateParams.set('date', moment(switcherDate).add(1, 'days').format('YYYY-MM-DD'));
-    setDateParams(dateParams);
-  };
 
   return (
     <div className="calendar-section">
@@ -52,7 +36,7 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
           <div className="calendar-section__activity-button">
             <NavLink
               to={`/departures`}
-              onClick={handlerYestaday}
+              onClick={e => pickerDay(e, -1, dateParams, setDateParams)}
               className={
                 currentDate === moment().add(-1, 'days').format('YYYY-MM-DD')
                   ? `calendar-section__select-dates_active calendar-section__dates-button`
@@ -68,7 +52,7 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
           <div className="calendar-section__activity-button">
             <NavLink
               to={'departures'}
-              onClick={handlerToday}
+              onClick={e => pickerDay(e, 0, dateParams, setDateParams)}
               className={
                 currentDate === moment().format('YYYY-MM-DD')
                   ? `calendar-section__select-dates_active calendar-section__dates-button`
@@ -84,7 +68,7 @@ const DateFiled = ({ onChangeDate, selectDate }) => {
           <div className="calendar-section__activity-button">
             <NavLink
               to={'departures'}
-              onClick={handlerTomorrow}
+              onClick={e => pickerDay(e, 1, dateParams, setDateParams)}
               className={
                 currentDate === moment().add(1, 'days').format('YYYY-MM-DD')
                   ? `calendar-section__select-dates_active calendar-section__dates-button`
