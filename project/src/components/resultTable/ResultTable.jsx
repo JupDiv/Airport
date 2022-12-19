@@ -46,6 +46,7 @@ const ResultTable = ({ searchList, date }) => {
               <ResultRow key={id} {...flight} />
             ))}
           />
+          <Route path="*" element={<Navigate to={`departures?date=${selectDate}`} replace />} />
         </Routes>
       </tbody>
     </table>
