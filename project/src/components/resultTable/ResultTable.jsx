@@ -15,6 +15,7 @@ const textHeadTable = [
 ];
 
 const ResultTable = ({ searchList, date }) => {
+  console.log(new Response());
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
