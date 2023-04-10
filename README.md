@@ -1,5 +1,5 @@
 ```
- NOW SERVER IS DOWN
+Server can be down
 
 ```
 
